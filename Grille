@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "Navale.h"
+
+**int GenGrille(int temp){ /** CREATION GRILLES DE DIFFERENTES TAILLES EN FONCTION DU PARA*/
+
+    int** tab;
+    int i=0;
+if (temp==1){ //grille taille 10x10
+
+    tab=(**int)malloc(10,sizeof(*int));
+
+    for (i=0;i<10;i++){
+        tab[i]=(*int)malloc(10,sizeof(int));
+    }
+}
+if (temp==0){ // on verra
+
+    tab=(**int)malloc(5,sizeof(*int));
+
+    for (i=0;i<?;i++){
+        tab[i]=(*int)malloc(5,sizeof(int));
+    }
+if (temp==2){ // on verra
+
+    tab=(**int)malloc(?,sizeof(*int));
+
+    for (i=0;i<?;i++){
+        tab[i]=(*int)malloc(?,sizeof(int));
+    }
+}
+return tab;
+}
