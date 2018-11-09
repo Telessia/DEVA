@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "header.h"
+
+int **GenGrille(int choixdiff,int** tab){ /** CREATION GRILLES DE DIFFERENTES TAILLES EN FONCTION DU PARA**/
+
+    int i=0;
+
+    if (choixdiff==5){ // 5x5
+
+        tab=(int**)calloc(diff1,sizeof(int*));
+
+        for (i=0;i<diff1;i++){
+            tab[i]=(int*)calloc(diff1,sizeof(int));
+        }
+    if (choixdiff==10){ //grille taille 10x10
+
+        tab=(int**)calloc(diff2,sizeof(int*));
+
+        for (i=0;i<diff2;i++){
+            tab[i]=(int*)calloc(diff2,sizeof(int));
+        }
+    }
+    if (choixdiff==15){ // 15x15
+
+        tab=(int**)calloc(diff3,sizeof(int*));
+
+        for (i=0;i<diff3;i++){
+            tab[i]=(int*)calloc(diff3,sizeof(int));
+        }
+    }
+    return tab;
+    }
+}
+void affgrille(int choixdiff,int** tab){
+    int i=0,j=0;
+    tab=GenGrille(choixdiff, tab);
+    printf("\t\tGrille A\B \n");
+    for(i=0;i<choixdiff;i++){
+        for(j=0;j<choixdiff;j++){
+            printf("%d",tab[i][j]);
+            printf("\t");
+        }
+        printf("\n");
+    }
+}
+
+int libgrille(int **tab,int choixdiff){
+    int i=0;
+    for(i=0;i<choixdiff;i++){
+        free(tab[i]);
+    }
+    free(tab);
+}
