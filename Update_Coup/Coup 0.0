@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "header.h"
+
+//fonction qui appliquera le coup placé en parametre
+void Marquage (Coords c,int** tabJ,int** tabJm,int** tabIA,int** tabIAm, int player){ /**0 pour Mer ,1 pour tir rate ,2 pour pour tir touché sur
+    la grille de marquage , 3 pour Bateau touché sur la grille d'origine (celle ou on met les bateaux)*/
+
+if (player==0){ //player 0 = joueur
+
+    if (tabIA[c.posx][c.posy]==0){ //si mer , on met 1 sur la grille marquage du joueur
+        tabJm[c.posx][c.posy]=1;
+        printf("Rate");
+    }
+
+
+    if (tabIA[c.posx][c.posy]==1){ //si touché on met 2 sur la grille marquage joueur et 3 sur le bateau de la Grille d'orig de l'IA
+        tabIA[c.posx][c.posy]=3;
+        tabJm[c.posx][c.posy]=2;
+        printf("Touche");
+    }
+    }
+if (player==1){ //player 1 = IA ou joueur 2
+
+ if (tabJ[c.posx][c.posy]==0){ //si mer , on met 1 sur la grille marquage de l'IA ou du J2
+        tabIAm[c.posx][c.posy]=1;
+        printf("Rate");
+        }
+
+    if (tabJ[c.posx][c.posy]==1){ //si touché on met 2 sur la grille marquage IA ou J2 et 3 sur le bateau de la Grille d'orig du J
+        tabJ[c.posx][c.posy]=3;
+        tabIAm[c.posx][c.posy]=2;
+        printf("Touche");
+    }
+    }
+}
+//manque le cas ou un bateau est coulé lors du coup ,reste à savoir si on modifie directement dans la structure des bateaux
