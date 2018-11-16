@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "header.h"
+#include "affgrille.c"
+int main(){
+    /**variables**/
+    int **tab;
+    int choixdiff=0;
+    int i=0,j=0;
+    Flotte FlotteJ1;
+    /**fin variables**/
+    printf("donner la taille de la grille (carre): 5, 10 ou 15\n");scanf("%d",&choixdiff);
+    affgrille(choixdiff,tab);
+    libgrille(tab,choixdiff);
+    return 0;
+}
