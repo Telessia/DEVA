@@ -1,0 +1,78 @@
+
+#ifndef NAVALE_H_INCLUDED
+#define NAVALE_H_INCLUDED
+
+#include <string.h>
+#include <stdbool.h>
+#define diff1 6
+#define diff2 11
+#define diff3 16
+/*typedef int TABMatrice [diff3][diff3];*/
+//ASCII 64-74
+
+typedef struct {
+    int posx;  // Struct de 2 ccords qui serviront aux coups , aux marquages et au positionnement des bateaux
+    int posy;
+    bool batal;
+    bool touche;
+} Coords;
+
+typedef struct{
+    int taille;
+    int nombre;
+    Coords coordporteavion[5];
+}porteavion;
+
+typedef struct{
+    int taille;
+    int nombre;
+    Coords coordcroiseur[4];
+}croiseur;
+
+typedef struct{
+    int taille;
+    int nombre;
+    Coords coordcontretorpilleur[3];
+}contretorpilleur;
+
+typedef struct{
+    int taille;
+    int nombre;
+    Coords coordsousmarin[3];
+}sousmarin;
+
+typedef struct{
+    int taille;
+    int nombre;
+    Coords coordtorpilleur[2];
+}torpilleur;
+
+typedef struct {
+    int nombres;
+   /** porteavion.nom="porte-avion";
+    porteavion.nombre=1;
+    porteavion.taille=5;
+
+    croiseur.nom="croiseur";
+    croiseur.nombre=1;
+    croiseur.taille=4;
+
+    contretorpilleur.nom="contretorpilleur";
+    contretorpilleur.nombre=1;
+    contretorpilleur.taille=3;
+
+    sousmarin.nom="sous-marin";
+    sousmarin.nombre=1;
+    sousmarin.taille=3;
+
+    torpilleur.nom="torpilleur";
+    torpilleur.nombre=1;
+    torpilleur.taille=2;**/
+    porteavion porteavionJ;
+    croiseur croiseurJ;
+    contretorpilleur contretorpilleurJ;
+    sousmarin sousmarinJ;
+    torpilleur torpilleurJ;
+
+} Flotte;
+#endif // NAVALE_H_INCLUDED
