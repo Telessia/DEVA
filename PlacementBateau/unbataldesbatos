@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "header.h"
+
+void saisiecoords(int **tab, int choixdiff,Flotte FlotteJ1, int tailleShip){
+    Coords a;
+    a.posx=0,a.posy=0;
+    while( a.posx<1 &&  a.posx>choixdiff+1 || a.posy<1 && a.posy>choixdiff+1){
+        printf("\ndonner la position de départ du bateau de taille %d (taille de carte:%d)", tailleShip,choixdiff);
+        scanf("%d%d",&a.posx,&a.posy);
+    }
+}
+
+
+Flotte placementbateauxJ1(int **tab, int choixdiff){
+    Flotte FlotteJ1;
+    /**nombres de type de bateaux**/
+    FlotteJ1.nombres=5;
+    FlotteJ1.porteavionJ.nombre=1
+    FlotteJ1.contretorpilleurJ.nombre=1;
+    FlotteJ1.croiseurJ.nombre=1;
+    FlotteJ1.sousmarinJ.nombre=1;
+    FlotteJ1.torpilleurJ.nombre=1;
+    /**fin du nombre**/
+
+    /**taille des bateaux**/
+    FlotteJ1.porteavionJ.taille=5;
+    FlotteJ1.contretorpilleurJ.taille=4;
+    FlotteJ1.croiseurJ.taille=3;
+    FlotteJ1.sousmarinJ.taille=3;
+    FlotteJ1.torpilleurJ.taille=2;
+    /**fin tailles**/
+
+
+
+    return FlotteJ1;
+}
