@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "menu.h"
+/** fonction de saisie **/
+int saisie()
+{
+    int a;
+    printf("Selectionner : \n");
+    scanf("%d",&a);
+    return a;
+}
+
+/** selection du mode de jeu **/
+int selection_mode_jeu()
+{
+    int select = 0;
+    printf("-- : [MENU] : --\n");
+    printf("CHOISIR LE MODE DE JEU\n");
+    printf("[1] JOUEUR / [2] JOUEURS\n");
+    select = saisie();
+    switch_mode_jeu(select);
+    switch_ia(select);
+    return select;
+
+}
+/** choisir le niveau de difficulte de l'ia **/
+int switch_ia(int a)
+{
+    printf("Choisir le niveau de difficulte \n");
+    printf("1 : FACILE / 2 : DIFFICILE \n");
+    a = saisie();
+    switch(a)
+    {
+  case 1 :
+    printf("Niveau de difficulte FACILE : \n");
+    break;
+    return a;
+  case 2 :
+    printf("Niveau de difficulte DIFFICILE : \n");
+    break;
+    return a;
+    }
+}
+
+/** Choisir entre l'ia ou le multiplayer **/
+int switch_mode_jeu(int a)
+{
+    switch(a)
+    {
+    case 1 :
+        printf("Mode [1] Joueur \n");
+        break;
+    case 2 :
+        printf("Mode [2] Joueurs \n");
+        break;
+    }
+    return a;
+}
+
+
+
+/**selection taille grille **/
+int selection_grille()
+{
+    int select;
+    printf("CHOISIR LA TAILLE DE LA GRILLE : [1] [2] [3] : \n");
+    select = saisie();
+    return select;
+}
+/** switch grille **/
+int switch_grille(int a)
+{
+    switch(a)
+    {
+        case 1:
+        printf("Grille de taille [1] \n");
+        break;
+        case 2:
+        printf("Grille de taille [2] \n");
+        break;
+    }
+}
