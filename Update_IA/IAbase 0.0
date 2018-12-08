@@ -1,0 +1,50 @@
+Coords IAbase (char** tabIAm,char** tabJ,Flotte FlotteJ,int taille){//IA uniquement
+    Coords plt;
+    plt.posx=rand()%taille-1;
+    plt.posy=rand()%taille-1;
+
+    if (IA.mode==0){//si en recherche d'un bateau
+        while (tabIAm[plt.posx][plt.posy]!='O'){
+            plt.posx=rand()%taille-1;
+            plt.posy=rand()%taille-1;
+        }
+    return plt;
+    }
+
+    if (IA.mode==1){//si un bateau a été trouvé au tour précédent
+        if(IA.touche==0){
+            if(IA.direction==0){
+                if((IA.prectemp.posx)+1<taille){
+                    plt.posx=IA.prectemp.posx+1;
+                    plt.posy=IA.prectemp.posy;
+                    IA.prectemp.posx++;
+                }
+            }
+
+            if(IA.direction==1){
+                if((IA.prectemp.posy)+1<taille){
+                    plt.posx=IA.prectemp.posx;
+                    plt.posy=IA.prectemp.posy+1;
+                    IA.prectemp.posx++;
+                }
+            }
+
+            if(IA.direction==2){
+                if((IA.prectemp.posx)-1>0){
+                    plt.posx=IA.prectemp.posx-1;
+                    plt.posy=IA.prectemp.posy;
+                    IA.prectemp.posx++;
+                }
+            }
+
+            if(IA.direction==3){
+                if((IA.prectemp.posy)-1>0){
+                    plt.posx=IA.prectemp.posx;
+                    plt.posy=IA.prectemp.posy-1;
+                    IA.prectemp.posx++;
+                }
+            }
+
+        }
+    }
+}
