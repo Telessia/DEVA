@@ -1,0 +1,108 @@
+#include "headerIA.h"
+
+void saisiedir(int* dir){
+    printf("Saisir direction (0: bas) (2: haut) (3: gauche) (1: droite): \n");
+    while ((*dir<0)||(*dir>3)){
+      scanf("%d",dir);
+    }
+}
+int verifJ (Flotte* FlotteJ,char** tabJ,Coords plt,int tailleG,int id){
+    int direction=-1;
+    saisiedir(&direction);
+    int cpt=0;
+    int cpt2=0;
+    int i=0;
+    Coords stk[5];
+    printf("\n DIR: %d \n",direction);
+    while ((cpt!=FlotteJ->Nav[id].taille)&&(cpt2<1)){
+            printf("\n DEBUG VERIF \n");
+        i=0;
+        cpt=0;
+
+        if (direction==0){
+            while((tabJ[plt.posx+i][plt.posy]=='O')&&(i<FlotteJ->Nav[id].taille)&&(plt.posx+i<tailleG)&&(plt.posx+FlotteJ->Nav[id].taille<tailleG)){
+                stk[i].posx=(plt.posx)+i;
+                stk[i].posy=plt.posy;
+                cpt++;
+                i++;
+            }
+            if (cpt!=FlotteJ->Nav[id].taille){
+                    cpt2++;
+            }
+        }
+
+
+        if (direction==1){
+            while((tabJ[plt.posx][plt.posy+i]=='O')&&(i<FlotteJ->Nav[id].taille)&&(plt.posy+i<tailleG)&&(plt.posy+FlotteJ->Nav[id].taille<tailleG)){
+                stk[i].posx=plt.posx;
+                stk[i].posy=(plt.posy)+i;
+                cpt++;
+                i++;
+
+            }
+            if(cpt!=FlotteJ->Nav[id].taille){
+                cpt2++;
+            }
+        }
+
+        if (direction==2){
+            while((tabJ[plt.posx-i][plt.posy]=='O')&&(i<FlotteJ->Nav[id].taille)&&(plt.posx-i>0)&&(plt.posx-FlotteJ->Nav[id].taille>0)){
+                stk[i].posx=(plt.posx)-i;
+                stk[i].posy=plt.posy;
+                cpt++;
+                i++;
+            }
+            if (cpt!=FlotteJ->Nav[id].taille){
+                cpt2++;
+            }
+        }
+
+        if (direction==3){
+            while((tabJ[plt.posx][plt.posy-i]=='O')&&(i<FlotteJ->Nav[id].taille)&&(plt.posy-i>0)&&(plt.posy-FlotteJ->Nav[id].taille>0)){
+                stk[i].posx=plt.posx;
+                stk[i].posy=(plt.posy)-i;
+                cpt++;
+                i++;
+            }
+            if (cpt!=FlotteJ->Nav[id].taille){
+                cpt2++;
+            }
+        }
+    }
+        if (cpt==FlotteJ->Nav[id].taille) {
+                for (i=0;i<FlotteJ->Nav[id].taille;i++){
+                    tabJ[stk[i].posx][stk[i].posy]='B';
+                    FlotteJ->Nav[id].c[i].posx=stk[i].posx;
+                    FlotteJ->Nav[id].c[i].posy=stk[i].posy;
+                    printf("\n DEBUG FINAL \n");
+                }
+                affgen(tabJ);
+         return 1;
+            }
+return 0;
+}
+
+
+Coords saisiecoords(){
+    Coords a;
+    a.posx=0,a.posy=0;
+    while( (a.posx<=0 ||  a.posx>10) || (a.posy<=0 || a.posy>10)){
+        printf("\ndonner les coordonnées voulues");
+        scanf("%d%d",&a.posx,&a.posy);
+    }
+    return a;
+}
+
+
+void placementJ (char** tabIA,int taille,Flotte* FlotteIA){
+    int valide =0;
+    int i=0;
+    Coords plt;
+ while (valide<5){
+         plt=saisiecoords(10);
+valide=valide+verifJ(FlotteIA,tabIA,plt,taille,i);
+i=valide;
+
+
+}
+}
