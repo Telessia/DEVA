@@ -1,0 +1,34 @@
+#include "headerIA.h"
+
+void genFlotte (Flotte*Flotte,int taille){//marche aussi pour les joueurs 1 et 2;
+    if (taille==10){
+        Flotte->statut=5;
+        Flotte->Nav=(Navire*)malloc(5*sizeof(Navire));
+        Flotte->Nav[0].id=0;
+        Flotte->Nav[1].id=1;
+        Flotte->Nav[2].id=2;
+        Flotte->Nav[3].id=3;
+        Flotte->Nav[4].id=4;
+        Flotte->Nav[0].hp=2;
+        Flotte->Nav[1].hp=3;
+        Flotte->Nav[2].hp=3;
+        Flotte->Nav[3].hp=4;
+        Flotte->Nav[4].hp=5;
+        Flotte->Nav[0].taille=2;
+        Flotte->Nav[1].taille=3;
+        Flotte->Nav[2].taille=3;
+        Flotte->Nav[3].taille=4;
+        Flotte->Nav[4].taille=5;
+        strcpy(Flotte->Nav[0].nom,"Torpilleur");
+        strcpy(Flotte->Nav[1].nom,"ContreTorpilleur");
+        strcpy(Flotte->Nav[2].nom,"SousMarin");
+        strcpy(Flotte->Nav[3].nom,"Croiseur");
+        strcpy(Flotte->Nav[4].nom,"PorteAvion");
+        //FlotteIA->Nav[0].c=(Coords*)malloc(2*sizeof(Coords));
+        //FlotteIA->Nav[1].c=(Coords*)malloc(3*sizeof(Coords));
+        //FlotteIA->Nav[2].c=(Coords*)malloc(3*sizeof(Coords));
+        //FlotteIA->Nav[3].c=(Coords*)malloc(4*sizeof(Coords));
+       // FlotteIA->Nav[4].c=(Coords*)malloc(5*sizeof(Coords));
+        printf("\n //DEBUG/ALLOC/ \n");
+    }
+}
