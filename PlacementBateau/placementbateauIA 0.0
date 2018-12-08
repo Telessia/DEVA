@@ -1,0 +1,109 @@
+#include "headerIA.h"
+
+int verifIA (Flotte* FlotteIA,char** tabIA,Coords plt,int tailleG,int id){
+    int direction=0;
+    direction=rand()%3;
+    int cpt=0;
+    int cpt2=0;
+    int i=0;
+    Coords stk[5];
+    printf("\n DIR: %d \n",direction);
+    while ((cpt!=FlotteIA->Nav[id].taille)&&(cpt2<3)){
+            printf("\n DEBUG VERIF \n");
+        i=0;
+        cpt=0;
+        /**vers le bas**/
+        if (direction==0){
+            while((tabIA[plt.posx+i][plt.posy]=='O')&&(i<FlotteIA->Nav[id].taille)&&(plt.posx+FlotteIA->Nav[id].taille<tailleG)){
+                stk[i].posx=(plt.posx)+i;
+                stk[i].posy=plt.posy;
+                cpt++;
+                i++;
+            }
+            i=0;
+             printf ("\n CPT: %d \n",cpt);
+            if (cpt!=FlotteIA->Nav[id].taille){
+                direction=direction+3;
+                cpt2++;
+            }
+        }
+
+        /**vers la droite**/
+        if (direction==1){
+            while((tabIA[plt.posx][plt.posy+i]=='O')&&(i<FlotteIA->Nav[id].taille)&&(plt.posy+FlotteIA->Nav[id].taille<tailleG)){
+                stk[i].posx=plt.posx;
+                stk[i].posy=(plt.posy)+i;
+                cpt++;
+                i++;
+
+            }
+            i=0;
+            printf ("\n CPT: %d \n",cpt);
+            if(cpt!=FlotteIA->Nav[id].taille){
+                direction=direction+1;
+                cpt2++;
+            }
+        }
+        /**vers le haut**/
+        if (direction==2){
+            while((tabIA[plt.posx-i][plt.posy]=='O')&&(i<FlotteIA->Nav[id].taille)&&(plt.posx-FlotteIA->Nav[id].taille>0)){
+                stk[i].posx=(plt.posx)-i;
+                stk[i].posy=plt.posy;
+                cpt++;
+                i++;
+            }
+            i=0;
+             printf ("\n CPT: %d \n",cpt);
+            if (cpt!=FlotteIA->Nav[id].taille){
+                direction=direction-2;
+                cpt2++;
+            }
+        }
+        /**vers la gauche**/
+        if (direction==3){
+            while((tabIA[plt.posx][plt.posy-i]=='O')&&(i<FlotteIA->Nav[id].taille)&&(plt.posy-FlotteIA->Nav[id].taille>0)){
+                stk[i].posx=plt.posx;
+                stk[i].posy=(plt.posy)-i;
+                cpt++;
+                i++;
+            }
+            i=0;
+             printf ("\n CPT: %d \n",cpt);
+            if (cpt!=FlotteIA->Nav[id].taille){
+                direction=direction-2;
+                cpt2++;
+            }
+        }
+    }
+        if (cpt==FlotteIA->Nav[id].taille) {
+                for (i=0;i<FlotteIA->Nav[id].taille;i++){
+                    tabIA[stk[i].posx][stk[i].posy]='B';
+                    FlotteIA->Nav[id].c[i].posx=stk[i].posx;
+                    FlotteIA->Nav[id].c[i].posy=stk[i].posy;
+                    printf("\n DEBUG FINAL \n");
+                }
+         return 1;
+            }
+
+return 0;
+}
+
+void IA_Placement (char** tabIA,int taille,Flotte* FlotteIA){ //tu devras envoyer la taille manuellement Louis
+    Coords plt;
+    int i=0;
+    int valide=0;
+    plt.posx=rand()%9;
+    plt.posy=rand()%9;
+        while (valide<5){
+            //PASSE
+            while(tabIA[plt.posx][plt.posy]!='O'){
+                plt.posx=rand()%9;
+                plt.posy=rand()%9;
+            }
+            printf("\n X: %d \n",plt.posx);
+            printf("\n Y: %d \n",plt.posy);
+            valide=valide+verifIA(FlotteIA,tabIA,plt,taille,i);
+            plt.posx=rand()%9;
+            plt.posy=rand()%9;
+            i=valide;
+}}
