@@ -1,0 +1,29 @@
+#ifndef HEADERIA_H_INCLUDED
+#define HEADERIA_H_INCLUDED
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int posx;  // Struct de 2 coords qui serviront aux coups , aux marquages et au positionnement des bateaux
+    int posy;
+}Coords;
+
+typedef struct{
+    char nom[17];
+    int id;
+    int taille;
+    int hp;
+    Coords c[5];
+}Navire;
+
+typedef struct{
+    Navire* Nav;
+    int statut;
+}Flotte;
+
+//FONCTIONS
+void genFlotte (Flotte*Flotte,int taille);
+int verifIA (Flotte* FlotteIA,char** tabIA,Coords plt,int tailleG,int id);
+void IA_Placement (char** tabIA,int tailleG,Flotte* FlotteIA);
+#endif // HEADERIA_H_INCLUDED
