@@ -1,0 +1,48 @@
+#include "headerIA.h"
+#include "TourIA.c"
+int JEU (){
+
+/**MENU*/
+
+int taille=10;
+
+//GENERATION DES GRILLES
+char** tabJ=gen();
+char** tabJm=gen();
+char** tabIA=gen();
+char** tabIAm=gen();
+//GENERATION DES FLOTTES
+Flotte FlotteJ;
+genFlotte(&FlotteJ,taille);
+Flotte FlotteIA;
+genFlotte(&FlotteIA,taille);
+//PLACEMENT DES BATEAUX DANS LES GRILLES ET LES FLOTTES
+placementJ(&FlotteJ,tabJ,taille);
+placementIA(&FlotteIA,tabIA,taille);
+
+//INITIALISATION DE L'IA (A TERMINER)
+IA.direction;
+IA.mode=0;
+IA.touche=0;
+//
+
+//PLACE AU JEU
+int FIN=0;
+int joueur=1;
+
+    while(FIN!=0){
+        //TOUR JOUEUR
+        if (joueur==1){
+        marquage(tabIA,tabIAm,tabJ,tabJm,&FlotteIA,&FlotteJ,???,1);//fonction joueur à créer
+        FIN=finFlotte(&FlotteJ,&FlotteIA,joueur);
+            joueur=2;
+        }
+        //TOUR IA
+        else{
+        marquage(tabIA,tabIAm,tabJ,tabJm,&FlotteIA,&FlotteJ,IAbase(tabIAm,taille),2);
+        FIN=finFlotte(&FlotteJ,&FlotteIA,joueur);
+        joueur=1;
+        }
+    }
+return 0;
+}
