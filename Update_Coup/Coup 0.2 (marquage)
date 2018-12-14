@@ -1,0 +1,45 @@
+void sombrage (Flotte* FlotteJ,int id){
+//verifie et affiche si un bateau est detruit
+    if (FlotteJ->Nav[id].hp==0){
+        printf("%s est detruit\n",FlotteJ->Nav[id].nom);
+    }
+}
+
+void marquage (char** tabIA,char** tabIAm,char** tabJ,char** tabJm,Flotte* FlotteIA,Flotte* FlotteJ,Coords coup,int joueur){
+//utilisee par les joueurs et l'IA pour verifier et marquer les coups
+    if (joueur==1){
+        if (tabIA[coup.posx][coup.posy]=='O'){
+            tabJm[coup.posx][coup.posy]='X';
+        }
+        if (tabIA[coup.posx][coup.posy]=='B'){
+            tabJm[coup.posx][coup.posy]='T';
+            for (int i=0;i<5;i++){
+                for (int j=0;j<FlotteIA->Nav[i].taille;j++){
+                    if ((FlotteIA->Nav[i].c[j].posx==coup.posx)&&(FlotteIA->Nav[i].c[j].posy==coup.posy)){
+                        FlotteIA->Nav[i].hp--;
+                        FlotteIA->statut--;
+                        sombrage(FlotteIA,i);
+                    }
+                }
+            }
+        }
+    }
+
+    if (joueur==2){//marche pour le J2 et l'IA
+        if (tabJ[coup.posx][coup.posy]=='O'){
+            tabIAm[coup.posx][coup.posy]='X';
+        }
+        if (tabJ[coup.posx][coup.posy]=='B'){
+            tabIAm[coup.posx][coup.posy]='T';
+            for (int i=0;i<5;i++){
+                for (int j=0;j<FlotteJ->Nav[i].taille;j++){
+                    if ((FlotteJ->Nav[i].c[j].posx==coup.posx)&&(FlotteJ->Nav[i].c[j].posy==coup.posy)){
+                        FlotteJ->Nav[i].hp--;
+                        FlotteJ->statut--;
+                        sombrage(FlotteJ,i);
+                    }
+                }
+            }
+        }
+    }
+}
