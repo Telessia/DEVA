@@ -1,3 +1,1 @@
-*.cpp linguist-detectable=false
-*.c linguist-detectable=true
-*.Roff linguist-detectable=false
+* linguist-language=C
